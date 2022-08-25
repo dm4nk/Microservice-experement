@@ -1,6 +1,6 @@
-package com.dm4nk.customer.controller;
+package com.dm4nk.customer.impl.controller;
 
-import com.dm4nk.customer.service.CustomerService;
+import com.dm4nk.customer.api.service.CustomerService;
 import com.dm4nk.shared.request.customer.BanCustomerRequest;
 import com.dm4nk.shared.request.customer.CustomerRegistrationRequest;
 import com.dm4nk.shared.response.customer.CustomerRegistrationResponse;

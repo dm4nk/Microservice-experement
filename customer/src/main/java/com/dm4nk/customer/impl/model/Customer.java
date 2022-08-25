@@ -1,4 +1,4 @@
-package com.dm4nk.customer.model;
+package com.dm4nk.customer.impl.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

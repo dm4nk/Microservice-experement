@@ -1,6 +1,6 @@
-package com.dm4nk.customer.config;
+package com.dm4nk.customer.impl.config;
 
-import com.dm4nk.customer.logging.Level;
+import com.dm4nk.customer.impl.util.logging.Level;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
