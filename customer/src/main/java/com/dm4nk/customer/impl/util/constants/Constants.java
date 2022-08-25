@@ -1,4 +1,4 @@
-package com.dm4nk.customer.common;
+package com.dm4nk.customer.impl.util.constants;
 
 public interface Constants {
     interface Query {

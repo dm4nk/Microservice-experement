@@ -1,4 +1,4 @@
-package com.dm4nk.customer.config;
+package com.dm4nk.customer.impl.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

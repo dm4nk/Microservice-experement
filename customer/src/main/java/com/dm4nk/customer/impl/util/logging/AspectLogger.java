@@ -1,4 +1,4 @@
-package com.dm4nk.customer.logging;
+package com.dm4nk.customer.impl.util.logging;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +26,7 @@ public class AspectLogger {
 
     private Boolean loggingEnabled;
 
-    @Pointcut("execution(* com.dm4nk.customer.service.*.*(..))")
+    @Pointcut("execution(* com.dm4nk.customer.impl.service.*.*(..))")
     void service() {
     }
 

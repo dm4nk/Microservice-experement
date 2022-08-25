@@ -1,4 +1,4 @@
-package com.dm4nk.customer.logging;
+package com.dm4nk.customer.impl.util.logging;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

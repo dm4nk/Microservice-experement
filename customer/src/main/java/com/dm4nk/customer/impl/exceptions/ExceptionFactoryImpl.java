@@ -1,7 +1,7 @@
-package com.dm4nk.customer.exceptions;
+package com.dm4nk.customer.impl.exceptions;
 
-import com.dm4nk.customer.common.ExceptionTypes;
-import com.dm4nk.customer.exceptions.fraud.FraudException;
+import com.dm4nk.customer.impl.util.enums.ExceptionTypes;
+import com.dm4nk.customer.impl.exceptions.fraud.FraudException;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -10,7 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 
 @Slf4j
 @Component
-public class ExceptionFactory {
+public class ExceptionFactoryImpl implements com.dm4nk.customer.api.exceptions.ExceptionFactory {
     private static final ImmutableMap<ExceptionTypes, Class<? extends RuntimeException>> TYPE_TO_EXCEPTION = ImmutableMap.of(
             ExceptionTypes.FRAUD, FraudException.class
     );
@@ -19,6 +19,7 @@ public class ExceptionFactory {
             ExceptionTypes.FRAUD, "Customer with Id: %s is Fraudster"
     );
 
+    @Override
     @SuppressWarnings("ConstantConditions")
     public RuntimeException generateException(ExceptionTypes exceptionType, Object... args) {
         try {

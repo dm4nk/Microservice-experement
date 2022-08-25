@@ -1,9 +1,10 @@
-package com.dm4nk.customer.service;
+package com.dm4nk.customer.impl.service;
 
-import com.dm4nk.customer.common.ExceptionTypes;
-import com.dm4nk.customer.exceptions.ExceptionFactory;
-import com.dm4nk.customer.model.Customer;
-import com.dm4nk.customer.repository.CustomerRepository;
+import com.dm4nk.customer.api.exceptions.ExceptionFactory;
+import com.dm4nk.customer.impl.util.enums.ExceptionTypes;
+import com.dm4nk.customer.impl.util.constants.Constants;
+import com.dm4nk.customer.impl.model.Customer;
+import com.dm4nk.customer.api.repository.CustomerRepository;
 import com.dm4nk.shared.request.customer.BanCustomerRequest;
 import com.dm4nk.shared.request.customer.CustomerRegistrationRequest;
 import com.dm4nk.shared.request.fraud.FraudCheckRequest;
@@ -19,13 +20,12 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.transaction.Transactional;
 import java.net.URI;
 
-import static com.dm4nk.customer.common.Constants.Query.CUSTOMER_ID;
 import static java.util.Objects.requireNonNull;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class CustomerService {
+public class CustomerServiceImpl implements com.dm4nk.customer.api.service.CustomerService {
 
     private final CustomerRepository customerRepository;
     private final RestTemplate restTemplate;
@@ -35,6 +35,7 @@ public class CustomerService {
 
     private final UriComponentsBuilder fraudUriBuilder;
 
+    @Override
     @Transactional
     public void registerCustomer(CustomerRegistrationRequest customerRegistrationRequest) {
         Customer customer = Customer.builder()
@@ -46,7 +47,7 @@ public class CustomerService {
         Customer savedCustomer = customerRepository.save(customer);
 
         URI uri = checkUriBuilder
-                .queryParam(CUSTOMER_ID, savedCustomer.getId())
+                .queryParam(Constants.Query.CUSTOMER_ID, savedCustomer.getId())
                 .build()
                 .toUri();
 
@@ -68,10 +69,11 @@ public class CustomerService {
         //todo send notification
     }
 
+    @Override
     public FraudResponse banCustomer(BanCustomerRequest banCustomerRequest) {
         log.debug("Gor request: {}", banCustomerRequest);
 
-        URI uri = fraudUriBuilder.queryParam(CUSTOMER_ID, banCustomerRequest.customerId())
+        URI uri = fraudUriBuilder.queryParam(Constants.Query.CUSTOMER_ID, banCustomerRequest.customerId())
                 .build()
                 .toUri();
 
@@ -88,6 +90,7 @@ public class CustomerService {
         return fraudResponse;
     }
 
+    @Override
     public String test(String firstArg, String secondArg) {
         return firstArg + secondArg;
     }
