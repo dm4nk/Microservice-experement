@@ -8,6 +8,6 @@ on:
 jobs:
   deployment:
     runs-on: ubuntu-latest
-    environment: production
+    environment: env
     steps:
       - name: deploy
