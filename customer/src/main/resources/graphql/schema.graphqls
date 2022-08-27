@@ -1,16 +1,28 @@
 type Customer {
-    id: ID!,
-    firstName: String,
-    lastName: String,
+    id: ID!
+    firstName: String
+    lastName: String
     email: String
+    password: String
 }
 type Message{
     message: String!
 }
+input AuthorizationInput{
+    email: String!
+    password: String!
+}
+input RegistrationInput{
+    firstName: String!
+    lastName: String!
+    email: String!
+    password: String!
+}
 type Query {
-    getCustomer(id: ID):Customer
+    getCustomer(id: ID!):Customer
+    authorize(authorizationInput: AuthorizationInput!):Customer
 }
 type Mutation {
-    registerCustomer(firstName: String!, lastName: String!, email: String):Customer
+    registerCustomer(registrationInput: RegistrationInput!):Customer
     banCustomer(id: ID!):Message
 }

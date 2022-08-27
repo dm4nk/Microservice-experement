@@ -1,7 +1,7 @@
 package com.dm4nk.customer.impl.exceptions;
 
-import com.dm4nk.customer.impl.util.enums.ExceptionTypes;
 import com.dm4nk.customer.impl.exceptions.fraud.FraudException;
+import com.dm4nk.customer.impl.util.enums.ExceptionTypes;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
