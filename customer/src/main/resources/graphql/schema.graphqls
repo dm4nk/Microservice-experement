@@ -1,0 +1,16 @@
+type Customer {
+    id: ID!,
+    firstName: String,
+    lastName: String,
+    email: String
+}
+type Message{
+    message: String!
+}
+type Query {
+    getCustomer(id: ID):Customer
+}
+type Mutation {
+    registerCustomer(firstName: String!, lastName: String!, email: String):Customer
+    banCustomer(id: ID!):Message
+}
