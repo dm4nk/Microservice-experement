@@ -1,5 +1,7 @@
 package com.dm4nk.customer.impl.config;
 
+import com.dm4nk.customer.api.mappers.CustomerMapper;
+import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,5 +30,10 @@ public class CustomerConfig {
     @Bean("fraudUriBuilder")
     public UriComponentsBuilder fraudUriBuilder() {
         return UriComponentsBuilder.fromUriString(fraudUrl);
+    }
+
+    @Bean("customerMapper")
+    public CustomerMapper customerMapper() {
+        return Mappers.getMapper(CustomerMapper.class);
     }
 }

@@ -20,9 +20,9 @@ input RegistrationInput{
 }
 type Query {
     getCustomer(id: ID!):Customer
-    authorize(authorizationInput: AuthorizationInput!):Customer
+    authorize(input: AuthorizationInput!):Customer
 }
 type Mutation {
-    registerCustomer(registrationInput: RegistrationInput!):Customer
+    registerCustomer(input: RegistrationInput!):Customer
     banCustomer(id: ID!):Message
 }
